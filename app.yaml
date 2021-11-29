@@ -1,0 +1,12 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: stop container
+    shell: docker stop demo
+  - name: remove container
+    shell: docker rm -f demo
+  - name: remove image
+    shell: docker rmi -f viknesh2605/testproject:lts
+  - name: Run container
+    shell: docker run -itd --name demo -p 8093:8080 viknesh2605/testproject:lts
+    
